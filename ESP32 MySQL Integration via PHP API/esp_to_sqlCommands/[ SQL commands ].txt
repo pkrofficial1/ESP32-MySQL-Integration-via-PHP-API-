@@ -1,0 +1,75 @@
+SQL commands :
+
+1. Create Table :
+
+CREATE TABLE student_info (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50),
+    dep_id INT,
+    roll_number VARCHAR(20),
+    current_year INT,
+    sem INT,
+    year_of_passOut INT
+);
+__________________________________________________________________________________
+
+2. Insert Data :
+
+INSERT INTO student_info (name, dep_id, roll_number, current_year, sem, year_of_passOut)
+VALUES ('Praveen', 201, 'IT101', 3, 6, 2025);
+
+INSERT INTO student_info (name, dep_id, roll_number, current_year, sem, year_of_passOut)
+VALUES ('Kamalesh', 202, 'CS202', 2, 4, 2026);
+
+INSERT INTO student_info (name, dep_id, roll_number, current_year, sem, year_of_passOut)
+VALUES ('Joel', 203, 'EC303', 1, 2, 2027);
+
+__________________________________________________________________________________
+3. Update Data :
+
+UPDATE student_info
+SET current_year = 4, sem = 8
+WHERE name = 'Kamalesh';
+
+__________________________________________________________________________________
+
+4. Delete Data :
+DELETE FROM student_info WHERE name = 'Havishkar';
+
+DELETE FROM student_info WHERE dep_id = 203;
+
+__________________________________________________________________________________
+
+5. Retrieve Data (Select Queries)
+
+Select All Columns:
+SELECT * FROM student_info;
+
+Select Specific Columns:
+SELECT name, roll_number FROM student_info;
+
+Select with a Condition:
+SELECT * FROM student_info WHERE current_year = 3;
+
+Select with Multiple Conditions:
+SELECT * FROM student_info WHERE current_year = 3 AND sem = 6;
+
+Order Results:
+SELECT * FROM student_info ORDER BY year_of_passOut DESC;
+
+__________________________________________________________________________________
+6. Join Tables
+Assuming you have another table department_info:
+
+CREATE TABLE department_info (
+    dep_id INT PRIMARY KEY,
+    dep_name VARCHAR(50)
+);
+
+
+You can join student_info with department_info:
+
+SELECT student_info.name, department_info.dep_name
+FROM student_info
+JOIN department_info ON student_info.dep_id = department_info.dep_id;
+__________________________________________________________________________________
